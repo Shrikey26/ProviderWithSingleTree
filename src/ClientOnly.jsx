@@ -1,17 +1,16 @@
-import { useEffect, useRef } from 'react';
-import ReactDOM from 'react-dom/client';
+// ClientOnly.jsx (hydrated inside the tree)
+import { useEffect, useState } from 'react';
 import { allComponents } from './allComponents';
 
-export const ClientOnly = ({ componentName, id }) => {
-  const mountRef = useRef(null);
+export const ClientOnly = ({ componentName }) => {
+  const [Component, setComponent] = useState(null);
 
   useEffect(() => {
     const Comp = allComponents[componentName];
-    if (Comp && mountRef.current) {
-      const root = ReactDOM.createRoot(mountRef.current);
-      root.render(<Comp />);
-    }
+    setComponent(() => Comp);
   }, [componentName]);
 
-  return <div id={`client-${id}`} ref={mountRef} />;
+  if (!Component) return <div>Loading {componentName}...</div>;
+
+  return <Component />;
 };
