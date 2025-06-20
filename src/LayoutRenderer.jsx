@@ -21,23 +21,15 @@ export const LayoutRenderer = ({ layout, rows, cols }) => {
           minHeight: '100px',
         };
 
-        if (type === 'ssr' && Comp) {
-          return (
-            <div key={id} style={gridStyles}>
+        return (
+          <div key={id} style={gridStyles}>
+            {type === 'client' ? (
+              <ClientOnly componentName={component} />
+            ) : (
               <Comp />
-            </div>
-          );
-        }
-
-        if (type === 'client') {
-          return (
-            <div key={id} style={gridStyles}>
-              <ClientOnly componentName={component} id={id} />
-            </div>
-          );
-        }
-
-        return null;
+            )}
+          </div>
+        );
       })}
     </div>
   );
