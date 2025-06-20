@@ -5,7 +5,10 @@ export default defineConfig({
   plugins: [react()],
   build: {
     rollupOptions: {
-      input: './index.html', // ✅ okay for client builds only
-    },
+      input: './index.html'
+    }
   },
+  server: {
+    allowedHosts: ['providerwithsingletree.onrender.com']
+  }
 });
