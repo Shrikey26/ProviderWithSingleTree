@@ -3,11 +3,6 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
   plugins: [react()],
-  build: {
-    rollupOptions: {
-      input: './index.html'
-    }
-  },
   ssr: {
     external: ['react', 'react-dom']
   }
