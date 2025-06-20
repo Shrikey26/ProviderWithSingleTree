@@ -1,0 +1,10 @@
+{
+  "rows": 3,
+  "cols": 2,
+  "layout": [
+    { "id": "header", "component": "Header", "type": "ssr", "row": 0, "col": 0, "colSpan": 2 },
+    { "id": "sidebar", "component": "Sidebar", "type": "client", "row": 1, "col": 0 },
+    { "id": "main", "component": "MainContent", "type": "ssr", "row": 1, "col": 1 },
+    { "id": "footer", "component": "Footer", "type": "client", "row": 2, "col": 0, "colSpan": 2 }
+  ]
+}
